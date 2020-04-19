@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {createContact} from '../store/actions/createContact';
+import {createContact} from '../store/actions/contactActions';
 
 class Contact extends React.Component {
 
@@ -21,7 +21,8 @@ class Contact extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Handle Submit ====>",this.state);
+        //console.log("Handle Submit ====>",this.state);
+        this.props.createContact(this.state);
     }
 
     render() {

@@ -13,13 +13,14 @@ import PrivacyPolicy from './components/Privacy-Policy';
 import TermsConditions from './components/Terms-Conditions';
 import Blogs from './components/Blogs';
 import BlogDetails from './components/BlogDetails';
-import {Provider} from 'react-redux';
-import {createStore} from 'redux';
-import rootReducer from './store/reducers/rootReducer';
 import App from './App';
 
-const store = createStore(rootReducer);
+import {createStore, applyMiddleware} from 'redux';
+import rootReducer from './store/reducers/rootReducer';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 
+const store = createStore(rootReducer,applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}><App />
@@ -37,8 +38,7 @@ ReactDOM.render(
     <FooterBar></FooterBar>
   </div>
   </BrowserRouter>
-  </Provider>
-  ,
+  </Provider>,
   document.getElementById('root')
 );
 // If you want your app to work offline and load faster, you can change
